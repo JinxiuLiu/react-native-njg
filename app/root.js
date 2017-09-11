@@ -4,14 +4,14 @@
 'use strict';
 
 import React, { Component } from 'react'
-import Navigation from './app'
+import TabView from './component/TabView'
 import { View, Platform } from 'react-native'
 
 export default class rootApp extends Component {
   render() {
     return (
       <View style={{backgroundColor: "#f5f5f5", flex: 1}}>
-        <Navigation/>
+        <TabView/>
       </View>
     )
   }
