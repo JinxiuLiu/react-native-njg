@@ -4,7 +4,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { 
+import {
 	View,
 	Text,
 	StyleSheet,
@@ -18,12 +18,13 @@ import {
 import IconFont from 'react-native-vector-icons/IconFont';
 import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
 
+import BackPageComponent from '../../component/BackPageComponent';
 import NavigationBar from '../../component/NavigationBar';
 import { screen } from '../../constants';
 
 
 
-export default class HomePage extends Component {
+export default class HomePage extends BackPageComponent {
 
   render() {
     return (
@@ -31,11 +32,12 @@ export default class HomePage extends Component {
         <NavigationBar
             title="React Native JS code runs inside this Chrome tab"
             leftBtnIcon="zuobiao"
+            leftBtnPress={this._handleBack.bind(this)}
         />
         <View style={styles.CarouselView}>
         	<Carousel
             autoplay={true}
-            autoplayInterval={8000}
+            autoplayInterval={10000}
             infinite
             dotStyle={{backgroundColor: '#fff'}}
             dotActiveStyle={{backgroundColor: '#ff3a3b'}}
