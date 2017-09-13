@@ -12,8 +12,10 @@ import {
   Image,
   View
 } from 'react-native'
-import { StackNavigator, TabNavigator } from 'react-navigation'
+import TabNavigator from 'react-native-tab-navigator'
 import IconFont from 'react-native-vector-icons/IconFont'
+
+import { screen } from '../constants'
 
 import HomePage from '../pages/Home/Home'
 import CarsList from '../pages/CarsList'
@@ -21,103 +23,72 @@ import Release from '../pages/Release'
 import Store from '../pages/Store'
 import User from '../pages/User'
 
-const TabContainer = TabNavigator(
-  {
-    Home: {
-      screen: HomePage,
-      navigationOptions: ({ navigation }) => ({
-        tabBarLabel: '农机狗',
-        tabBarIcon: ({ tintColor }) =>
-          <IconFont name="zhuye" size={24} color={tintColor} />,
-      }),
-    },
-    CarsList: {
-      screen: CarsList,
-      navigationOptions: ({ navigation }) => ({
-        tabBarLabel: '车源',
-        tabBarIcon: ({ tintColor }) =>
-          <IconFont name="maiche" size={24} color={tintColor} />,
-      }),
-    },
-    Release: {
-      screen: Release,
-      navigationOptions: ({ navigation }) => ({
-        tabBarLabel: '发布',
-        tabBarIcon: ({ tintColor }) =>
-          <IconFont name="fabu" size={24} color={tintColor} />,
-      }),
-    },
-    Store: {
-      screen: Store,
-      navigationOptions: ({ navigation }) => ({
-        tabBarLabel: '店铺',
-        tabBarIcon: ({ tintColor }) =>
-          <IconFont name="dianpu" size={24} color={tintColor} />,
-        }),
-    },
-    User: {
-      screen: User,
-      navigationOptions: ({ navigation }) => ({
-        tabBarLabel: '我的',
-        tabBarIcon: ({ tintColor }) =>
-          <IconFont name="wode" size={24} color={tintColor} />,
-      }),
-    },
-  },
-  {
-    lazy: true,
-    tabBarPosition: 'bottom',
-    swipeEnabled: false,
-    animationEnabled: false,
-    backBehavior: 'none', // 按 back 键是否跳转到第一个Tab(首页)， none 为不跳转
-    tabBarOptions: {
-      activeTintColor: '#ff3a3b',
-      inactiveTintColor: '#666',
-      showIcon: true,
-      indicatorStyle: {
-        height: 0  // 如TabBar下面显示有一条线，可以设高度为0后隐藏
-      },
-      style: {
-        height: 50,
-        backgroundColor: '#fff',
-      },
-      tabStyle: {
-      },
-      iconStyle: {
-        position: 'relative',
-        top: -5,
-        width: 25,
-        height: 25
-      },
-      labelStyle: {
-        fontSize: 14, // 文字大小
-        position: 'relative',
-        top: -13,
-      },
-    },
-  }
-
-);
-
-const TabView = StackNavigator(
-  {
-    Home: {
-      screen: TabContainer,
-    },
-  },
-  {
-    headerMode: 'screen',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'rgba(0, 0, 0, .1)',
-        height: 44
-      },
-      headerTitleStyle: {
-        color: '#fff'
-      },
-      headerTintColor: '#fff'
+export default class TabView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentTab: 'HomePage',
+      hideTabBar: false
     }
+    this.tabNames = [
+      ["首页", "zhuye", "HomePage", <HomePage {...this.props}/>],
+      ["车源", "maiche", "CarsList", <CarsList {...this.props}/>],
+      ["发布", "fabu", "Release", <Release {...this.props}/>],
+      ["店铺", "dianpu", "Store", <Store {...this.props}/>],
+      ["我的", "wode", "User", <User {...this.props}/>]
+    ]
   }
-);
 
-export default TabView;
+  render(){
+    return (
+      <TabNavigator
+        hidesTabTouch={true}
+        tabBarStyle={[styles.tabbar,
+          (this.state.hideTabBar?styles.hide:{})
+        ]}
+        sceneStyle={{ paddingBottom: styles.tabbar.height }}
+      >
+        {
+          this.tabNames.map((item, i) => {
+            return (
+              <TabNavigator.Item
+                key={i}
+                tabStyle={styles.tabStyle}
+                title={item[0]}
+                titleStyle={styles.titleStyle}
+                selected={this.state.currentTab === item[2]}
+                selectedTitleStyle={{color: "#ff3a3b"}}
+                renderIcon={() => <IconFont style={styles.iconfont} name={item[1]} size={24} color="#666" />}
+                renderSelectedIcon={() => <IconFont style={styles.iconfont} name={item[1].replace(/\-outline$/, "")} size={24} color="#ff3a3b" />}
+                onPress={() => this.setState({ currentTab: item[2] })}
+              >
+                {item[3]}
+              </TabNavigator.Item>
+            )
+          })
+        }
+      </TabNavigator>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  tabbar: {
+    height: 50,
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+  },
+  hide: {
+    transform: [
+      {translateX: screen.width}
+    ]
+  },
+  titleStyle: {
+    fontSize: 14,
+  },
+  iconfont: {
+    position: 'relative',
+    top: 4,
+  }
+});

@@ -9,5 +9,12 @@ export default {
   width: Dimensions.get('window').width,
   height: Dimensions.get('window').height,
   onePixel: 1 / PixelRatio.get(),
-  statusBarHeight: (Platform.OS === 'ios' ? 20 : 0)
+  touchableHighlightUnderlayColor: 'rgba(0,0,0,.4)',
+  touchableOpacityActiveOpacity: 0.8,
+  navBar: {
+  	height: 44,
+  	titleColor: '#fff',
+  	titleSize: 16,
+  	textBtnSize: 12
+  }
 }

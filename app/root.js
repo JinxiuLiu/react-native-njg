@@ -4,8 +4,9 @@
 'use strict';
 
 import React, { Component } from 'react'
-import TabView from './component/TabView'
 import { View, Platform } from 'react-native'
+
+import TabView from './component/TabView'
 
 export default class rootApp extends Component {
   render() {
