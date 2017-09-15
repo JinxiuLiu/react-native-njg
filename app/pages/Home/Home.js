@@ -21,7 +21,7 @@ import { Carousel } from 'antd-mobile';
 import BackPageComponent from '../../component/BackPageComponent';
 import NavigationBar from '../../component/NavigationBar';
 import Grid from '../../component/Grid';
-import { screen } from '../../constants';
+import { screen } from '../../constants'; 
 
 import px2dp from '../../util/px2dp';
 
@@ -59,7 +59,7 @@ export default class HomePage extends BackPageComponent {
           <View style={styles.CarouselText}>
             <Carousel
               autoplay={true}
-              autoplayInterval={6000}
+              autoplayInterval={15000}
               infinite
               dots={false}
               vertical={true}
@@ -74,6 +74,11 @@ export default class HomePage extends BackPageComponent {
           <Text style={styles.ItemText}>更多</Text>
         </View>
         <Grid/>
+        <View style={{alignItems: 'center','marginTop': px2dp(20), 'backgroundColor': '#fff'}}>
+          <Text style={{fontSize: 14}}>添加求购，抢好车！</Text>
+          <Text style={{fontSize: 14}}>全国第一车源帮您找到！</Text>
+          <View><Text>添加求购</Text></View>
+        </View>
       </View>
     );
   }
