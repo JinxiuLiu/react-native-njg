@@ -1,7 +1,7 @@
 /**
  * Created by LiuJX on 2017-09-13 16:02:43
  */
-'use strict'
+'use strict';
 
 import React, {Component, PropTypes} from 'react';
 import {

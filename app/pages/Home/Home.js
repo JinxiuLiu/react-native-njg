@@ -16,7 +16,7 @@ import {
 	FlatList
 } from 'react-native';
 import IconFont from 'react-native-vector-icons/IconFont';
-import { Carousel, Flex } from 'antd-mobile';
+import { Carousel } from 'antd-mobile';
 
 import BackPageComponent from '../../component/BackPageComponent';
 import NavigationBar from '../../component/NavigationBar';
