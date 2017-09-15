@@ -16,15 +16,20 @@ import {
 	FlatList
 } from 'react-native';
 import IconFont from 'react-native-vector-icons/IconFont';
-import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
+import { Carousel, Flex } from 'antd-mobile';
 
 import BackPageComponent from '../../component/BackPageComponent';
 import NavigationBar from '../../component/NavigationBar';
+import Grid from '../../component/Grid';
 import { screen } from '../../constants';
 
-
+import px2dp from '../../util/px2dp';
 
 export default class HomePage extends BackPageComponent {
+
+  data = Array.from(new Array(8)).map((_val, i) => ({
+    text: `name${i}`,
+  }));
 
   render() {
     return (
@@ -49,6 +54,26 @@ export default class HomePage extends BackPageComponent {
             <Image source={{uri: 'http://img1.nongjigou.com/20170420170440_54610.png'}} style={styles.img}/>
           </Carousel>
         </View>
+        <View style={styles.SceneItem}>
+          <Text style={[{color: '#ff7e00'}, styles.ItemText]}>实况：</Text>
+          <View style={styles.CarouselText}>
+            <Carousel
+              autoplay={true}
+              autoplayInterval={6000}
+              infinite
+              dots={false}
+              vertical={true}
+            >
+              <Text style={styles.CarouselTextInfo} numberOfLines={1}>万方上新了乐星 1004 拖拉机万方上新了乐星 1004 拖拉机万方上新了乐星 1004 拖拉机</Text>
+              <Text style={styles.CarouselTextInfo} numberOfLines={1}>龙沙上新了沃得 1004 拖拉机</Text>
+              <Text style={styles.CarouselTextInfo} numberOfLines={1}>13187139627上新了其他 自填 谷物联合收获机</Text>
+              <Text style={styles.CarouselTextInfo} numberOfLines={1}>13871642469上新了东方红 LX804 拖拉机</Text>
+              <Text style={styles.CarouselTextInfo} numberOfLines={1}>15972233625上新了福田雷沃 M554-B 拖拉机</Text>
+            </Carousel>
+          </View>
+          <Text style={styles.ItemText}>更多</Text>
+        </View>
+        <Grid/>
       </View>
     );
   }
@@ -70,20 +95,34 @@ const styles = StyleSheet.create({
   CarouselView: {
     width: screen.width,
     height: 200,
-    position: 'relative',
-    zIndex: -1,
-    top: -44
-  },
-  TabView: {
-    width: screen.width,
-    height: 44,
-    backgroundColor: 'rgba(0,0,0,0.1)',
     position: 'absolute',
-    top: 0,
-    zIndex: 10
+    zIndex: -1,
   },
   img: {
     height: 200
-  }
+  },
+  SceneItem: {
+    marginTop: 156,
+    marginBottom: px2dp(20),
+    backgroundColor: '#fff',
+    width: screen.width,
+    height: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: px2dp(20),
+    paddingRight: px2dp(20),
+  },
+  CarouselText: {
+    width: screen.width * .8,
+    paddingLeft: 5,
+    flexDirection: 'column',
+  },
+  CarouselTextInfo: {
+    fontSize: 16,
+  },
+  ItemText: {
+    fontSize: 16,
+  },
+  
 });
 

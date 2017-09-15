@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         shadowColor: 'rgb(0,0,0)',
         shadowOffset: {height: 2, width: 1},
         shadowOpacity: 0.25,
-        shadowRadius: 3
+        shadowRadius: 3,
     },
     fixedCell: {
         width: screen.navBar.height,
