@@ -11,6 +11,7 @@ export default {
   onePixel: 1 / PixelRatio.get(),
   touchableHighlightUnderlayColor: 'rgba(0,0,0,.4)',
   touchableOpacityActiveOpacity: 0.8,
+  themeColor: '#ff3a3b',
   navBar: {
   	height: 44,
   	titleColor: '#fff',

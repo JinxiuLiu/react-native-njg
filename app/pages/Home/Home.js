@@ -19,19 +19,27 @@ import IconFont from 'react-native-vector-icons/IconFont';
 import { Carousel } from 'antd-mobile';
 
 import BackPageComponent from '../../component/BackPageComponent';
+import ScrollVertical from '../../component/scrollVertical';
 import NavigationBar from '../../component/NavigationBar';
+import Button from '../../component/Button';
 import Grid from '../../component/Grid';
-import { screen } from '../../constants'; 
+import { screen } from '../../constants';
 
 import px2dp from '../../util/px2dp';
 
 export default class HomePage extends BackPageComponent {
 
-  data = Array.from(new Array(8)).map((_val, i) => ({
-    text: `name${i}`,
-  }));
+  addToBuy() {
+    alert('添加求购');
+  }
 
   render() {
+
+    let data = [];
+    for(let i=4; i--; ) {
+      data.push({content: 'animatedScrollanimate ' + i})
+    }
+
     return (
       <View>
         <NavigationBar
@@ -57,19 +65,14 @@ export default class HomePage extends BackPageComponent {
         <View style={styles.SceneItem}>
           <Text style={[{color: '#ff7e00'}, styles.ItemText]}>实况：</Text>
           <View style={styles.CarouselText}>
-            <Carousel
-              autoplay={true}
-              autoplayInterval={15000}
-              infinite
-              dots={false}
-              vertical={true}
-            >
-              <Text style={styles.CarouselTextInfo} numberOfLines={1}>万方上新了乐星 1004 拖拉机万方上新了乐星 1004 拖拉机万方上新了乐星 1004 拖拉机</Text>
-              <Text style={styles.CarouselTextInfo} numberOfLines={1}>龙沙上新了沃得 1004 拖拉机</Text>
-              <Text style={styles.CarouselTextInfo} numberOfLines={1}>13187139627上新了其他 自填 谷物联合收获机</Text>
-              <Text style={styles.CarouselTextInfo} numberOfLines={1}>13871642469上新了东方红 LX804 拖拉机</Text>
-              <Text style={styles.CarouselTextInfo} numberOfLines={1}>15972233625上新了福田雷沃 M554-B 拖拉机</Text>
-            </Carousel>
+            <ScrollVertical
+              data={data}
+              delay={4000}
+              duration={500}
+              scrollHeight={40}
+              scrollStyle={{backgroundColor:'#fff'}}
+              textStyle={{color:'#666', fontSize:16}}
+            />
           </View>
           <Text style={styles.ItemText}>更多</Text>
         </View>
@@ -77,7 +80,11 @@ export default class HomePage extends BackPageComponent {
         <View style={{alignItems: 'center','marginTop': px2dp(20), 'backgroundColor': '#fff'}}>
           <Text style={{fontSize: 14}}>添加求购，抢好车！</Text>
           <Text style={{fontSize: 14}}>全国第一车源帮您找到！</Text>
-          <View><Text>添加求购</Text></View>
+          <Button
+            title='添加求购'
+            width={screen.width * .6}
+            onPress={this.addToBuy.bind(this)}
+          />
         </View>
       </View>
     );

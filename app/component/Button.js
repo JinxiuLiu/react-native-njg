@@ -16,10 +16,11 @@ import { Flex } from 'antd-mobile';
 import { screen } from '../constants';
 import px2dp from '../util/px2dp';
 
-export default class Botton extends Component {
+export default class Button extends Component {
 	static propTypes = {
     title: PropTypes.string.isRequired,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
+    width: PropTypes.number,
   };
 
   constructor(props) {
@@ -31,9 +32,8 @@ export default class Botton extends Component {
   		<TouchableOpacity
 				onPress={this.props.onPress}
         activeOpacity={screen.touchableOpacityActiveOpacity}>
-  		>
-	  		<View style={styles.BottonItem}>
-		      
+	  		<View style={[styles.ButtonView, {width: this.props.width}]}>
+		      <Text style={styles.ButtonText}>{this.props.title}</Text>
 		    </View>
 	    </TouchableOpacity>
   	);
@@ -42,5 +42,15 @@ export default class Botton extends Component {
 }
 
 const styles = StyleSheet.create({
-	
+	ButtonView: {
+		backgroundColor: screen.themeColor,
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: 34,
+		borderRadius: 6
+	},
+	ButtonText: {
+		fontSize: 16,
+		color: '#fff'
+	}
 });
