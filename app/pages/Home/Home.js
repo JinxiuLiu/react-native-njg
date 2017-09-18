@@ -19,8 +19,9 @@ import IconFont from 'react-native-vector-icons/IconFont';
 import { Carousel } from 'antd-mobile';
 
 import BackPageComponent from '../../component/BackPageComponent';
-import ScrollVertical from '../../component/scrollVertical';
+import ScrollVertical from '../../component/ScrollVertical';
 import NavigationBar from '../../component/NavigationBar';
+import RowItem from '../../component/SimpleRowItem';
 import Button from '../../component/Button';
 import Grid from '../../component/Grid';
 import { screen } from '../../constants';
@@ -34,7 +35,6 @@ export default class HomePage extends BackPageComponent {
   }
 
   render() {
-
     let data = [];
     for(let i=4; i--; ) {
       data.push({content: 'animatedScrollanimate ' + i})
@@ -43,9 +43,9 @@ export default class HomePage extends BackPageComponent {
     return (
       <View>
         <NavigationBar
-            title="React Native JS code runs inside this Chrome tab"
-            leftBtnIcon="zuobiao"
-            leftBtnPress={this._handleBack.bind(this)}
+          title="React Native JS code runs inside this Chrome tab"
+          leftBtnIcon="zuobiao"
+          leftBtnPress={this._handleBack.bind(this)}
         />
         <View style={styles.CarouselView}>
         	<Carousel
@@ -76,15 +76,22 @@ export default class HomePage extends BackPageComponent {
           </View>
           <Text style={styles.ItemText}>更多</Text>
         </View>
-        <Grid/>
-        <View style={{alignItems: 'center','marginTop': px2dp(20), 'backgroundColor': '#fff'}}>
-          <Text style={{fontSize: 14}}>添加求购，抢好车！</Text>
-          <Text style={{fontSize: 14}}>全国第一车源帮您找到！</Text>
-          <Button
-            title='添加求购'
-            width={screen.width * .6}
-            onPress={this.addToBuy.bind(this)}
-          />
+        <Grid />
+        <View style={styles.buyInfo}>
+          <View style={{height: 30, justifyContent: 'center', paddingTop: 5}}><Text style={{fontSize: 14, color: '#333'}}>添加求购，抢好车！</Text></View>
+          <View style={{height: 30, justifyContent: 'center'}}><Text style={{fontSize: 14, color: '#333'}}>全国第一车源帮您找到！</Text></View>
+          <View style={{paddingTop: 5, paddingBottom: 5}}>
+            <Button
+              title='添加求购'
+              width={screen.width * .7}
+              onPress={this.addToBuy.bind(this)}
+            />
+          </View>
+          <View>
+            <RowItem title="我的足迹" isShowLeftIcon={false} renderSegment={true} segmentColor='#EBEBEB' onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
+            <RowItem title="求购车源" isShowLeftIcon={false} renderSegment={true} segmentColor='#EBEBEB' onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
+            <RowItem title="收藏车源" isShowLeftIcon={false} renderSegment={false} onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
+          </View>
         </View>
       </View>
     );
@@ -124,6 +131,11 @@ const styles = StyleSheet.create({
     paddingLeft: px2dp(20),
     paddingRight: px2dp(20),
   },
+  buyInfo: {
+    alignItems: 'center',
+    'marginTop': px2dp(20),
+    'backgroundColor': '#fff',
+  },
   CarouselText: {
     width: screen.width * .8,
     paddingLeft: 5,
@@ -134,6 +146,7 @@ const styles = StyleSheet.create({
   },
   ItemText: {
     fontSize: 16,
+    color: '#333',
   },
   
 });

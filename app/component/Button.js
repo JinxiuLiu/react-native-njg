@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 		backgroundColor: screen.themeColor,
 		alignItems: 'center',
 		justifyContent: 'center',
-		height: 34,
+		height: 40,
 		borderRadius: 6
 	},
 	ButtonText: {

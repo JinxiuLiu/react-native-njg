@@ -35,7 +35,7 @@ export default class Grid extends Component {
 	        <View style={[styles.GridBoxItem, {borderRightWidth: 1}]}><Text style={styles.GridBoxText}>久保田</Text></View>
 	        <View style={[styles.GridBoxItem, {borderRightWidth: 1}]}><Text style={styles.GridBoxText}>洋马</Text></View>
 	        <View style={[styles.GridBoxItem, {borderRightWidth: 1}]}><Text style={styles.GridBoxText}>沃得</Text></View>
-	        <View style={styles.GridBoxItem}><Text style={[styles.GridBoxText, {color: 'red'}]}>全部</Text></View>
+	        <View style={styles.GridBoxItem}><Text style={[styles.GridBoxText, {color: screen.themeColor}]}>全部</Text></View>
 	      </Flex>
 	    </View>
   	);
@@ -63,5 +63,6 @@ const styles = StyleSheet.create({
   },
   GridBoxText: {
     textAlign: 'center',
+    color: '#333'
   }
 });
