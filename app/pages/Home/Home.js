@@ -88,8 +88,8 @@ export default class HomePage extends BackPageComponent {
             />
           </View>
           <View>
-            <RowItem title="我的足迹" isShowLeftIcon={false} renderSegment={true} segmentColor='#EBEBEB' onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
-            <RowItem title="求购车源" isShowLeftIcon={false} renderSegment={true} segmentColor='#EBEBEB' onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
+            <RowItem title="我的足迹" isShowLeftIcon={false} renderSegment={true} onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
+            <RowItem title="求购车源" isShowLeftIcon={false} renderSegment={true} onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
             <RowItem title="收藏车源" isShowLeftIcon={false} renderSegment={false} onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
           </View>
         </View>
@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
   buyInfo: {
     alignItems: 'center',
     'marginTop': px2dp(20),
+    'marginBottom': px2dp(20),
     'backgroundColor': '#fff',
   },
   CarouselText: {

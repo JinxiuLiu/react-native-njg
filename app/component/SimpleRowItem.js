@@ -55,7 +55,7 @@ export default class SimpleRowItem extends Component{
   }
 
   _renderContent(){
-    const {title, icon, renderSegment, iconColor, isShowRightArrow, isShowLeftIcon, rowItemBackgroundColor, segmentColor} = this.props;
+    const {title, icon, renderSegment, iconColor, isShowRightArrow, isShowLeftIcon, rowItemBackgroundColor} = this.props;
     return(
       <View style={[styles.container, {backgroundColor: rowItemBackgroundColor}]}>
         {isShowLeftIcon ?
@@ -77,7 +77,7 @@ export default class SimpleRowItem extends Component{
             }
           </View>
           { renderSegment ?
-            <View style={[styles.segmentLine, {backgroundColor: segmentColor}]}/>
+            <View style={[styles.segmentLine, {backgroundColor: '#EBEBEB'}]}/>
             :
             null
           }
@@ -126,6 +126,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   segmentLine: {
-    height: screen.onePixel,
+    height: 1,
   }
 });
