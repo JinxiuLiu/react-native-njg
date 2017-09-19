@@ -26,15 +26,15 @@ export default class Grid extends Component {
   	return (
   		<View style={styles.GridBox}>
 	      <Flex justify="center">
-	        <View style={[styles.GridBoxItem, {borderRightWidth: 1, borderBottomWidth: 1}]}><Text style={styles.GridBoxText}>东方红</Text></View>
-	        <View style={[styles.GridBoxItem, {borderRightWidth: 1, borderBottomWidth: 1}]}><Text style={styles.GridBoxText}>福田雷沃</Text></View>
-	        <View style={[styles.GridBoxItem, {borderRightWidth: 1, borderBottomWidth: 1}]}><Text style={styles.GridBoxText}>约翰迪尔</Text></View>
-	        <View style={[styles.GridBoxItem, {borderBottomWidth: 1}]}><Text style={styles.GridBoxText}>东风</Text></View>
+	        <View style={[styles.GridBoxItem, {borderRightWidth: screen.onePixel, borderBottomWidth: screen.onePixel}]}><Text style={styles.GridBoxText}>东方红</Text></View>
+	        <View style={[styles.GridBoxItem, {borderRightWidth: screen.onePixel, borderBottomWidth: screen.onePixel}]}><Text style={styles.GridBoxText}>福田雷沃</Text></View>
+	        <View style={[styles.GridBoxItem, {borderRightWidth: screen.onePixel, borderBottomWidth: screen.onePixel}]}><Text style={styles.GridBoxText}>约翰迪尔</Text></View>
+	        <View style={[styles.GridBoxItem, {borderBottomWidth: screen.onePixel}]}><Text style={styles.GridBoxText}>东风</Text></View>
 	      </Flex>
 	      <Flex justify="center">
-	        <View style={[styles.GridBoxItem, {borderRightWidth: 1}]}><Text style={styles.GridBoxText}>久保田</Text></View>
-	        <View style={[styles.GridBoxItem, {borderRightWidth: 1}]}><Text style={styles.GridBoxText}>洋马</Text></View>
-	        <View style={[styles.GridBoxItem, {borderRightWidth: 1}]}><Text style={styles.GridBoxText}>沃得</Text></View>
+	        <View style={[styles.GridBoxItem, {borderRightWidth: screen.onePixel}]}><Text style={styles.GridBoxText}>久保田</Text></View>
+	        <View style={[styles.GridBoxItem, {borderRightWidth: screen.onePixel}]}><Text style={styles.GridBoxText}>洋马</Text></View>
+	        <View style={[styles.GridBoxItem, {borderRightWidth: screen.onePixel}]}><Text style={styles.GridBoxText}>沃得</Text></View>
 	        <View style={styles.GridBoxItem}><Text style={[styles.GridBoxText, {color: screen.themeColor}]}>全部</Text></View>
 	      </Flex>
 	    </View>

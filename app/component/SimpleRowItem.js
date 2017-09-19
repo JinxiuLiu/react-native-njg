@@ -126,6 +126,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   segmentLine: {
-    height: 1,
+    height: screen.onePixel,
   }
 });

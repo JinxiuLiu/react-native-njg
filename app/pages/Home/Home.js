@@ -67,14 +67,13 @@ export default class HomePage extends BackPageComponent {
           <View style={styles.CarouselText}>
             <ScrollVertical
               data={data}
-              delay={4000}
+              delay={5000}
               duration={500}
               scrollHeight={40}
               scrollStyle={{backgroundColor:'#fff'}}
               textStyle={{color:'#666', fontSize:16}}
             />
           </View>
-          <Text style={styles.ItemText}>更多</Text>
         </View>
         <Grid />
         <View style={styles.buyInfo}>
@@ -93,6 +92,23 @@ export default class HomePage extends BackPageComponent {
             <RowItem title="收藏车源" isShowLeftIcon={false} renderSegment={false} onPress={this.addToBuy.bind(this)} isShowRightArrow={true}/>
           </View>
         </View>
+        <View style={styles.newEst}>
+          <View style={styles.newEstItem}>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={{textAlign: 'center'}}>实地验车</Text>
+              <View style={{justifyContent: 'center', borderWidth: screen.onePixel, borderColor: screen.themeColor, borderRadius: 8, marginTop: 6, width: 40}}><Text style={{textAlign: 'center', color: screen.themeColor}}>new</Text></View>
+            </View>
+            <View style={{flex: 1}}><Image source={{uri: 'http://s2.nongjigou.com/images/newcars.gif'}} style={{width: 68, height: 54}}/></View>
+          </View>
+          <View style={styles.newEstItem}>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', borderLeftWidth: screen.onePixel, borderLeftColor: '#EBEBEB'}}>
+              <Text style={{textAlign: 'center'}}>农机狗代售</Text>
+              <View style={{justifyContent: 'center', borderWidth: screen.onePixel, borderColor: screen.themeColor, borderRadius: 8, marginTop: 6, width: 40}}><Text style={{textAlign: 'center', color: screen.themeColor}}>new</Text></View>
+            </View>
+            <Image source={{uri: 'http://s2.nongjigou.com/images/newcars.gif'}} style={{width: 68, height: 54}}/>
+          </View>
+        </View>
+        
       </View>
     );
   }
@@ -147,8 +163,21 @@ const styles = StyleSheet.create({
   },
   ItemText: {
     fontSize: 16,
-    color: '#333',
   },
-  
+  newEst: {
+    width: screen.width,
+    height: 80,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    paddingLeft: px2dp(20),
+    paddingRight: px2dp(20),
+    paddingTop: px2dp(10),
+    paddingBottom: px2dp(10),
+  },
+  newEstItem: {
+    flex: 1,
+    flexDirection: 'row',
+  }
 });
 
